@@ -1,5 +1,5 @@
 groups:
-  - name: grafana oncall
+  - name: COS-CONFIG-test-GrafanaOnCall
     rules:
       - alert: heartbeat
         expr: vector(1)

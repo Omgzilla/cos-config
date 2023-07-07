@@ -1,35 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_JUJU_COS_54201207-9DF2-4360-874E-76B65044069D_PROMETHEUS_0",
-      "label": "juju_cos_54201207-9df2-4360-874e-76b65044069d_prometheus_0",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__elements": {},
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "9.2.1"
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "stat",
-      "name": "Stat",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -55,14 +24,13 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": null,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_JUJU_COS_54201207-9DF2-4360-874E-76B65044069D_PROMETHEUS_0}"
+        "uid": "${prometheusds}"
       },
       "description": "",
       "fieldConfig": {
@@ -113,10 +81,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_JUJU_COS_54201207-9DF2-4360-874E-76B65044069D_PROMETHEUS_0}"
+            "uid": "${prometheusds}"
           },
           "editorMode": "builder",
-          "expr": "prometheus_tsdb_chunk_write_queue_operations_total{operation=\"complete\"}",
+          "expr": "prometheus_tsdb_chunk_write_queue_operations_total{job=\"prometheus\", operation=\"complete\"}",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -130,7 +98,49 @@
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "hide": 0,
+        "includeAll": true,
+        "label": "Loki datasource",
+        "multi": true,
+        "name": "lokids",
+        "options": [],
+        "query": "loki",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "juju_cos_e62a82ef-03d9-49f3-8ca6-664b3f781a58_prometheus_0"
+          ],
+          "value": [
+            "juju_cos_e62a82ef-03d9-49f3-8ca6-664b3f781a58_prometheus_0"
+          ]
+        },
+        "hide": 0,
+        "includeAll": true,
+        "label": "Prometheus datasource",
+        "multi": true,
+        "name": "prometheusds",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      }
+    ]
   },
   "time": {
     "from": "now-6h",
@@ -140,6 +150,6 @@
   "timezone": "",
   "title": "Prometheus",
   "uid": "qvk7ElrVk",
-  "version": 3,
+  "version": 1,
   "weekStart": ""
 }

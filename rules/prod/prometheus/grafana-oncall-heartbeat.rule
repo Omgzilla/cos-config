@@ -1,0 +1,10 @@
+groups:
+  - name: grafana oncall
+    rules:
+      - alert: heartbeat
+        expr: vector(1)
+        labels:
+          severity: none
+        annotations:
+          description: An OnCall heartbeat that acts as a monitoring for monitoring system. If monitoring is down and stop sending alerts, Grafana OnCall will notify us.
+          summary: Heartbeat for Grafana OnCall
